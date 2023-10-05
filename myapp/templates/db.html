@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB</title>
+</head>
+<style>
+    body{
+        font-family:sans-serif;
+        font-size: large;
+    }
+    table, th, td{
+        border-width: 1;
+        border-style: solid;
+        border-collapse: collapse;
+        border-color:salmon;
+        padding: 10px;
+    }
+    th{
+        background-color:salmon;
+    }
+    a{
+        text-decoration: none;
+    }
+    button{
+        padding: 5px;
+        margin: 0 10px;
+        
+    }
+    .a{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .a > table{
+        text-align: center;
+        margin: 30px 15px 0px 30px;
+    }
+    .bt{
+        text-align: center;
+    }
+</style>
+<body>
+    {% if messages  %}
+        {% for message in messages %}
+        <p style="color: darkred;"><strong>{{message}}</strong></p>
+        {% endfor %}
+    {% endif %}
+    <div class="a">
+    <table >
+        <thead>
+            <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price (Baht)</th>
+            <th>Update</th>
+            <th>Delete</th>
+            <th>Buy</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for product in all_products %}
+            <tr>
+                <td>{{ product.id}}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price|floatformat }}</td>
+                <td><button type="button" onclick="location.href='/update/{{product.id}}'">Update</button></td>
+                <td><button type="button" onclick="if (confirm('Are you sure ?')) 
+                window.location.href='/delete/{{product.id}}'">Delete</button></td>
+                <td><button type="button" onclick="location.href='/buyuser/{{product.id}}'">Buy</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+
+    <table >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fname</th>
+                <th>Lname</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Update</th>
+                <th>Delete</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for datauser in all_data %}
+            <tr>
+                <td>{{ datauser.id}}</td>
+                <td>{{ datauser.fname }}</td>
+                <td>{{ datauser.lname }}</td>
+                <td>{{ datauser.address }}</td>
+                <td>{{ datauser.phone }}</td>
+                <td><button type="button" onclick="location.href='/updateuser/{{datauser.id}}'">Update</button></td>
+                <td><button type="button" onclick="if (confirm('Are you sure ?')) window.location.href='/deleteuser/{{datauser.id}}'">Delete</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+    <div class="bt">
+        <button><a href="/add">Add Product</a>&nbsp;</button>
+        <button><a href="/">Home</a></button>
+        <button><a href="/add_user">Add User</a>&nbsp;</button>
+    </div>
+</div>
+
+</body>
+</html>

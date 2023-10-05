@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        .a{
+        width: 380px ;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin: 30px auto ;
+        padding: 30px;
+        padding-bottom: 20px;
+        background-color: salmon;
+        border-radius: 20px;
+        
+    }
+    a{
+        text-decoration: none;
+        color: white;
+        
+    }
+    a:hover{
+        color: rgb(87, 82, 82);
+    }
+    p{
+        color: rgb(0, 0, 0);
+    }
+</style>
+<body>
+
+    <div class="a">
+        <h1 style="color:rgb(239, 239, 239)">Hello, {{name}}</h1>
+        <h2 style="color:rgb(239, 239, 239)">อายุ {{age}} ปี</h2>
+        {%if age >= 40 %}
+        คุณแก่แล้ว
+        {% else %}
+        <p>[ คุณยังไม่แก่ ]</p>
+        {% endif %}
+        <p></p>
+        <a href="db/" >View Database</a>
+
+    </div>
+</body>
+</html>

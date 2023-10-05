@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Data</title>
+</head>
+<style>
+    body{
+        font-family: sans-serif;
+        
+
+    }
+    label{
+        color: rgb(255, 255, 255);
+    }
+    .a{
+        width: 380px ;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 30px auto ;
+        padding: 30px;
+        padding-bottom: 20px;
+        background-color: salmon;
+        border-radius: 20px;
+    }
+    input{
+        width: 180px;
+        margin: 10px 0px 10px 0px;
+        border-radius: 5px;
+        padding: 8px;
+        border: none;
+        
+    }
+    input:hover{
+        width: 200px;
+        transition: 0.3s;
+    }
+    input:focus{
+        outline: 0;
+    }
+
+    button{
+        font-size: 14px;
+        padding: 8px;
+        border-radius: 20%;
+        border: solid 1.5px white;
+        background-color: salmon;
+        color: white;
+        margin-bottom: 15px;
+    }
+    button:hover{
+        border: solid 1.5px salmon;
+        background-color: rgb(255, 255, 255);
+        color: salmon;
+        transition: 0.3s;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+        
+    }
+    a:hover{
+        color: rgb(87, 82, 82);
+    }
+
+</style>
+<body>
+    <div class="a">
+        <form method="post">
+            {% csrf_token %}
+            <label for="name">Fname :</label><br>
+            <input type="text" name="fname" value="{{datauser.fname}}"/><br>
+            <label for="name">Lname :</label><br>
+            <input type="text" name="lname"  value="{{datauser.lname}}"/><br><br>
+            <label for="name">Address :</label><br>
+            <input type="text" name="address"  value="{{datauser.address}}"/><br><br>
+            <label for="name">Phone :</label><br>
+            <input type="text" name="phone"  value="{{datauser.phone}}"/><br><br>
+            <button type="submit"  value="edit">edit</button><br>
+            <a href="/db" >Back</a>
+        </form>
+    </div>
+</body>
+</html>
